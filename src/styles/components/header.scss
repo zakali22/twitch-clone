@@ -1,0 +1,16 @@
+@import "./../base/variables";
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+    & > *:first-child {
+        margin-right: auto;
+    }
+    &__logo {
+        height: 3rem;
+        width: 3rem;
+    }
+    &__links {
+    }
+}
