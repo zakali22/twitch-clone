@@ -21,4 +21,37 @@
             padding: 4rem 6rem;
         }
     }
+    &__sites {
+        display: flex;
+        flex-direction: column;
+        &--nav {
+            display: flex;
+            &__arrows {
+                display: flex;
+                justify-content: space-between;
+                margin-right: auto;
+                padding: 10px 5px;
+                width: 8rem;
+                color: darkgrey;
+                font-size: 2rem;
+                & > *:first-child {
+                    margin-right: 20px;
+                }
+                & > * {
+                    cursor: pointer;
+                }
+            }
+            &__settings {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 5px;
+                width: 10rem;
+                color: darkgrey;
+                font-size: 3rem;
+                & > * {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }

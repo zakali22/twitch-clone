@@ -1,3 +1,81 @@
 .homepage {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    &__live-channels {
+        height: 50%;
+        display: flex;
+        &--main {
+            flex: 2 0 auto;
+            background: lightcoral;
+            &__search {
+                display: flex;
+                align-items: stretch;
+                & > *:nth-child(2){
+                    display: flex;
+                    align-items: center;
+                    background: #fb6d3a;
+                    flex: 0 0 auto;
+                    color: white;
+                    font-size: 2rem;
+                    margin-right: 20px;
+                    padding: 17px 15px;
+                    border-radius: 14px;
+                    font-style: italic;
+                    font-weight: bold;
+                    & > *:first-child {
+                        margin-right: 10px;
+                    }
+                }
+                form {
+                    flex: 2 0 auto;
+                    margin-right: 10rem;
+                    label {
+                        position: relative;
+                        &::before {
+                            content: "";
+                            position: absolute;
+                            left: 20px;
+                            top: -3px;
+                            bottom: 0;
+                            width: 30px;
+                            background: url('./../../search-solid.svg');
+                            background-repeat: no-repeat;
+                            background-size: contain;
+                            height: 25px;
+                        }
+                    }
+                    input {
+                        padding: 7px 30px 7px 70px;
+                        width: calc(100% - 50px);
+                        background: #e2e1e1;
+                        border: none;
+                        height: calc(100% - 12px);
+                        font-size: 2rem;
+                        border-radius: 10px;
+                        &:focus {
+                            outline: none;
+                        }
+                        &::placeholder {
+                            font-size: 2rem;
+                            color: darkgray
+                        }
+                    }
+                }
+            }
+            &__recommended {
 
+            }
+        }
+        &--aside {
+            flex: 1 0 auto;
+            background: red;
+            height: 100%;
+        }
+    }
+    &__categories {
+        height: 50%;
+        background: green;
+    }
 }
