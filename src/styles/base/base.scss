@@ -13,22 +13,23 @@ body {
     font-family: $defaultFont;
     box-sizing: border-box;
     font-size: 1.6rem;
+    background: $themePrimary
 }
 
 h1, .h1 {
-    
+    font-size: 3.2rem;
 }
 
 h2, .h2 {
-    
+    font-size: 2.4rem;
 }
 
 h3, .h3 {
-    
+    font-size: 1.872rem;
 }
 
 h4, .h4 {
-    
+    font-size: 1.6rem;
 }
 
 p {
@@ -38,5 +39,6 @@ p {
 a {
     &:link, &:hover, &:focus, &:visited {
         text-decoration: none;
+        color: lightgrey
     }
 }
