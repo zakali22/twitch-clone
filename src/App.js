@@ -1,8 +1,7 @@
 import React from 'react';
-import {Route, Switch} from "react-router-dom"
+import {Route, Switch, Redirect} from "react-router-dom"
 
 import Header from "./components/header/Header"
-import Homepage from "./pages/homepage/Homepage"
 import PageNav from "./components/pagenav/PageNav"
 import StreamCreate from "./pages/streams/streams-create"
 import StreamDelete from "./pages/streams/streams-delete"
@@ -18,7 +17,9 @@ function App() {
       <div className="main-app__sites">
         <PageNav />
         <Switch>
-          <Route path="/" exact component={Homepage} />
+          <Route path="/" exact>
+            <Redirect to="/streams" />
+          </Route>
           <Route path="/streams" exact component={StreamList} />
           <Route path="/streams/delete" exact component={StreamDelete} />
           <Route path="/streams/create" exact component={StreamCreate} />

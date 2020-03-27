@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 
 class Header extends Component {
     state = {
-        activeLink: ''
+        activeLink: 'Streams'
     }
     changeLink(e){
         this.setState({
@@ -30,8 +30,8 @@ class Header extends Component {
                     </div>
                 </div>
                 <div className="header__links">
-                    <Link to="/" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Discover' ? 'active' : ''}`}><i className="fas fa-home"></i> Discover</h2></Link>
-                    <Link to="/streams" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Browse' ? 'active' : ''}`}><i className="far fa-compass"></i> Browse</h2></Link>
+                    {/* <Link to="/" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Discover' ? 'active' : ''}`}><i className="fas fa-home"></i> Discover</h2></Link> */}
+                    <Link to="/streams" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Streams' ? 'active' : ''}`}><i className="far fa-compass"></i> Streams</h2></Link>
                     <Link to="/register" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Register' ? 'active' : ''}`}> <i className="far fa-user"></i> Register</h2></Link>
                 </div>
             </nav>
