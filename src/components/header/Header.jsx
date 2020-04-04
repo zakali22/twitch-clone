@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import { Link } from 'react-router-dom'
 
+import GoogleAuth from "./../googleAuth/GoogleAuth"
+
 class Header extends Component {
     state = {
         activeLink: 'Streams'
@@ -15,7 +17,7 @@ class Header extends Component {
     render(){
         return (
             <nav className="header">
-                <Link to="/" className="header__logo--container">
+                <Link onClick={e => this.changeLink(e)} to="/" className="header__logo--container">
                     <img className="header__logo--container__img" src="/logo-twitch.png" alt="twitch logo"/>
                     <h1 className="h2 header__logo--container__text">Twitch</h1>
                 </Link>
@@ -30,9 +32,9 @@ class Header extends Component {
                     </div>
                 </div>
                 <div className="header__links">
-                    {/* <Link to="/" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Discover' ? 'active' : ''}`}><i className="fas fa-home"></i> Discover</h2></Link> */}
-                    <Link to="/streams" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Streams' ? 'active' : ''}`}><i className="far fa-compass"></i> Streams</h2></Link>
-                    <Link to="/register" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Register' ? 'active' : ''}`}> <i className="far fa-user"></i> Register</h2></Link>
+                    <Link to="/streams" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Streams' || this.state.activeLink === 'TWITCH' ? 'active' : ''}`}><i className="far fa-compass"></i> Streams</h2></Link>
+                    {/* <Link to="/register" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Register' ? 'active' : ''}`}> <i className="far fa-user"></i> Register</h2></Link> */}
+                    <Link to="/"><GoogleAuth /></Link>
                 </div>
             </nav>
         )

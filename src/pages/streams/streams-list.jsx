@@ -7,13 +7,13 @@ class StreamsList extends Component {
                 <div className="homepage__live-channels">
                     <div className="homepage__live-channels--main">
                         <div className="homepage__live-channels--main__search">
-                            <form onSubmit="">
+                            <form>
                                 <label>
-                                    <input onChange="" placeholder="Search..." name="channelSearch"/>   
+                                    <input placeholder="Search..." name="channelSearch"/>   
                                 </label>
                             </form>
                             <div>
-                                <i class="fas fa-crown"></i>
+                                <i className="fas fa-crown"></i>
                                 <p>Twitch Prime</p>
                             </div>
                         </div>
@@ -31,12 +31,12 @@ class StreamsList extends Component {
                                     </div>
                                     <div className="bottom-side">
                                         <div>
-                                            <i class="fas fa-play"></i>
-                                            <i class="fas fa-volume-down"></i>
+                                            <i className="fas fa-play"></i>
+                                            <i className="fas fa-volume-down"></i>
                                         </div>
                                         <div>
-                                            <i class="fas fa-heart"></i>
-                                            <i class="fas fa-compress"></i>
+                                            <i className="fas fa-heart"></i>
+                                            <i className="fas fa-compress"></i>
                                         </div>
                                     </div>
                                 </div>
@@ -70,13 +70,13 @@ class StreamsList extends Component {
                         <div className="homepage__live-channels--aside__img larger"></div>
                         <div className="homepage__live-channels--aside__consoles">
                             <span>
-                                <i class="fab fa-xbox"></i>
+                                <i className="fab fa-xbox"></i>
                             </span>
                             <span>
-                                <i class="fab fa-playstation"></i>
+                                <i className="fab fa-playstation"></i>
                             </span>
                             <span>
-                                <i class="fas fa-desktop"></i>
+                                <i className="fas fa-desktop"></i>
                             </span>
                         </div>
                     </div>
