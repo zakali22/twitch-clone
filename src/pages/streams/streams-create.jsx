@@ -7,12 +7,12 @@ function StreamsCreate(){
             <form className="stream__form">
                 <Field name="title" />
                 <Field name="description" />
-
                 <button>Submit</button>
             </form>
         </div>
     )
 }
 
-
-export default StreamsCreate
+export default reduxForm({
+    form: 'streamCreateForm'
+})(StreamsCreate)
