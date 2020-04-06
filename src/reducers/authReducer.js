@@ -1,7 +1,8 @@
 import actionTypes from "../actions/types"
 
 const INITIAL_STATE = {
-    signedIn: null
+    signedIn: null, 
+    currentUser: null
 }
 
 export default function(state = INITIAL_STATE, action){
@@ -9,12 +10,14 @@ export default function(state = INITIAL_STATE, action){
         case actionTypes.SIGNIN: 
             return {
                 ...state, 
-                signedIn: true
+                signedIn: true, 
+                currentUser: action.payload
             }
         case actionTypes.SIGNOUT:   
             return {
                 ...state, 
-                signedIn: false
+                signedIn: false, 
+                currentUser: null
             }
         default: 
             return state
