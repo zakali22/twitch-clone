@@ -1,0 +1,17 @@
+.streams {
+    &__form {
+        &--container {
+            height: 100%;
+            padding-top: 2.5rem;
+        }
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+        max-width: 60%;
+
+        & > *:not(:last-child){
+            margin-bottom: 30px;
+        }
+    }
+}
