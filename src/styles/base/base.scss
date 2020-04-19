@@ -75,6 +75,9 @@ label {
             border: 2px solid $themePrimary;
         }
     }
+    &.input-error {
+        border: 2px solid $themeRed;
+    }
 }
 
 
@@ -88,6 +91,7 @@ label {
     cursor: pointer;
     transition: .2s all ease-in-out;
     font-weight: bold;
+    outline: none;
     &.btn-primary {
         color: $themeGray;
         &:hover, &:active, &:focus {
@@ -97,3 +101,9 @@ label {
     }
 }
 
+.form-error {
+    color: $themeRed;
+    font-size: 1.6rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
