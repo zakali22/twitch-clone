@@ -3,6 +3,7 @@ import {Route, Switch, Redirect} from "react-router-dom"
 
 import Header from "./components/header/Header"
 import PageNav from "./components/pagenav/PageNav"
+import StreamsHome from "./pages/streams/streams-home"
 import StreamCreate from "./pages/streams/streams-create"
 import StreamDelete from "./pages/streams/streams-delete"
 import StreamEdit from "./pages/streams/streams-edit"
@@ -17,9 +18,7 @@ function App() {
       <div className="main-app__sites">
         <PageNav />
         <Switch>
-          <Route path="/" exact>
-            <Redirect to="/streams" />
-          </Route>
+          <Route path="/" exact component={StreamsHome}/>
           <Route path="/streams" exact component={StreamList} />
           <Route path="/streams/delete" exact component={StreamDelete} />
           <Route path="/streams/create" exact component={StreamCreate} />

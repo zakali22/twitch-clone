@@ -1,6 +1,8 @@
 import React from 'react'
+import {withRouter, Link} from "react-router-dom"
 
-function PageNav() {
+function PageNav(props) {
+    console.log(props)
     return (
         <nav className="main-app__sites--nav">
           <div className="main-app__sites--nav__arrows">
@@ -8,6 +10,7 @@ function PageNav() {
             <i className="fas fa-chevron-right"></i>
           </div>
           <div className="main-app__sites--nav__settings">
+            <Link to='/streams/create'><i class="far fa-plus-square"></i></Link>
             <i className="fas fa-cog"></i>
             <i className="far fa-moon"></i>
           </div>
@@ -15,4 +18,4 @@ function PageNav() {
     )
 }
 
-export default PageNav
+export default withRouter(PageNav)

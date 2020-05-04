@@ -45,9 +45,12 @@
                 display: flex;
                 justify-content: space-between;
                 padding: 10px 5px;
-                width: 10rem;
+                align-items: center;
                 color: darkgrey;
                 font-size: 3rem;
+                & > *:not(:last-child){
+                    margin-right: 2.5rem;
+                }
                 & > * {
                     cursor: pointer;
                 }
