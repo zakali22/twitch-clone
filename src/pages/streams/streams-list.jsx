@@ -54,12 +54,12 @@ class StreamsList extends Component {
     }
 
     renderStreamsList = () => {
-        const {props: {streams}} = this;
+        const {props: {streams, currentUser}} = this;
         return streams.map((stream, id) => {
             return (
-                <div className="streams__list--stream">
+                <div key={id} className={`streams__list--stream ${currentUser && stream.userId === currentUser.id ? 'loggedInStream' : 'notLoggedInStream'} `}>
                     <div className="streams__list--stream__image">
-                        <img src={StreamerImage} alt="Streamer image"/>
+                        <img src={StreamerImage} alt="Streamer"/>
                         <div className="hover__overlay" style={{backgroundColor: this.randomColorSelector()}}/>
                     </div>
                     {this.renderEditableSection(stream)}
@@ -69,7 +69,6 @@ class StreamsList extends Component {
     }
 
     render(){
-        const {props: {streams}} = this;
         return (
             <div className="streams__list">
                 <h1 className="main-page-title">Your Streams</h1>

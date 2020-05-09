@@ -5,8 +5,14 @@ import {createStream, getStreams} from "../../actions/streams"
 
 class StreamsCreate extends Component {
 
+    componentDidUpdate(){
+        if(!this.props.signedIn){
+            console.log(this.props.signedIn)
+            this.props.history.push("/")
+        }
+    }
+
     renderInputField = ({input, label, meta}) => {
-        console.log(meta)
         return (
             <label>{label}
                 {this.renderInputError(meta)}
@@ -20,9 +26,7 @@ class StreamsCreate extends Component {
     }
 
     submitHandler = (formValues) => {
-        this.props.createStream(formValues).then(() => {
-            this.props.getStreams();
-        })
+        this.props.createStream(formValues)
     }
 
     render(){
@@ -56,4 +60,10 @@ const formWrapper = reduxForm({
     validate
 })(StreamsCreate)
 
-export default connect(null, {createStream, getStreams})(formWrapper)
+const mapStateToProps = ({auth: {signedIn}}) => {
+    return {
+        signedIn
+    }
+}
+
+export default connect(mapStateToProps, {createStream, getStreams})(formWrapper)

@@ -30,15 +30,31 @@
             min-height: 100%;
             height: 100%;
             margin-bottom: 2rem;
-            cursor: pointer;
-            &:hover {
-                .streams__list--stream__image img {
-                    transform: translate(10px, -10px);
-                }
-                .streams__list--stream__image .hover__overlay {
-                    opacity: 1;
+            &.notLoggedInStream {
+                cursor: pointer;
+                &:hover {
+                    .streams__list--stream__image img {
+                        transform: translate(10px, -10px);
+                    }
+                    .streams__list--stream__image .hover__overlay {
+                        opacity: 1;
+                    }
                 }
             }
+            &.loggedInStream {
+                .streams__list--stream__image {
+                    cursor: pointer;
+                    &:hover {
+                        img {
+                            transform: translate(10px, -10px);
+                        }
+                        .hover__overlay {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            
             &:not(:nth-of-type(3n)){
                 margin-right: 2rem;
             }
@@ -86,6 +102,7 @@
                         width: 100%;
                         margin-top: 1rem;;
                         span {
+                            cursor: pointer;
                             margin-right: 10px;
                             background: darkgrey;
                             color: #f3f3f3;
@@ -100,6 +117,33 @@
                 }
                 &--user {
                     color: $themeLightGray;
+                }
+                &--edit {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    button {
+                        flex: 1;
+                        cursor: pointer;
+                        background: none;
+                        border: 1px solid $themePrimary;
+                        padding: .5rem 2rem;
+                        border-radius: 10px;
+                        &:first-of-type {
+                            margin-right: 1rem;
+                            &:hover {
+                                background: $themePrimary;
+                                color: white;
+                            }
+                        }
+                        &:last-of-type {
+                            &:hover {
+                                background: $themeRed;
+                                border: 1px solid $themeRed;
+                                color: white;
+                            }
+                        }
+                    }
                 }
             }
         }
