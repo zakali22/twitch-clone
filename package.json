@@ -41,6 +41,7 @@
   "devDependencies": {
     "axios": "^0.19.2",
     "react-items-carousel": "^2.8.0",
+    "react-loader-spinner": "^3.1.14",
     "react-slick": "^0.25.2",
     "slick-carousel": "^1.8.1"
   }

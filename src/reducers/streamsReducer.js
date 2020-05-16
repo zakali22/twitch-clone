@@ -19,7 +19,7 @@ export default function(state = INITIAL_STATE, action){
         case actionTypes.GET_STREAM:
             return {
                 ...state,
-                stream: state.streams[action.payload.id]
+                stream: action.payload
             }
         case actionTypes.EDIT_STREAM:
             return {

@@ -148,4 +148,17 @@
             }
         }
     }
+    &__edit {
+        height: 100%;
+        padding-top: 2.5rem;
+        &--buttons {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 70%;
+            & > *:first-child {
+                margin-right: 2rem;
+            }
+        }
+    }
 }

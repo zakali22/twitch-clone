@@ -20,10 +20,10 @@ function App() {
         <Switch>
           <Route path="/" exact component={StreamsHome}/>
           <Route path="/streams" exact component={StreamList} />
-          <Route path="/streams/delete" exact component={StreamDelete} />
+          <Route path="/streams/delete/:id" exact component={StreamDelete} />
           <Route path="/streams/create" exact component={StreamCreate} />
-          <Route path="/streams/edit" exact component={StreamEdit} />
-          <Route path="/streams/show" exact component={StreamShow} />
+          <Route path="/streams/edit/:id" exact component={StreamEdit} />
+          <Route path="/streams/show/:id" exact component={StreamShow} />
           <Route path="/register" exact component={Register} />
         </Switch>
       </div>

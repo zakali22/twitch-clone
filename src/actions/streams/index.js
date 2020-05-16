@@ -17,13 +17,17 @@ export const getStreams = () => async dispatch => { // GET
 }
 
 export const getStream = (id) => async dispatch => { // GET
-    await streams.get(`/streams/${id}`);
-    dispatch({type: actionTypes.GET_STREAM, payload: id})
+    const res = await streams.get(`/streams/${id}`);
+    console.log(res)
+    dispatch({type: actionTypes.GET_STREAM, payload: res.data})
 }
 
-export const editStream = (id, form) => async dispatch => { // PUT
-    const res = await streams.put(`/streams/${id}`, form);
+export const editStream = (streamId, form) => async (dispatch, getState) => { // PATCH (since this will only update the properties that we want)
+    const {auth: {currentUser: {id}}} = getState();
+    const res = await streams.patch(`/streams/${streamId}`, {...form}); 
+
     dispatch({type: actionTypes.EDIT_STREAM, payload: {id, data: res.data}})
+    history.push("/streams")
 }
 
 export const deleteStream = (id) => async dispatch => {

@@ -2,14 +2,12 @@ import React, {Component} from 'react'
 import {connect} from "react-redux"
 import {getStreams} from "../../actions/streams"
 import StreamerImage from "../../streamer-playing.PNG"
+import {Link} from "react-router-dom"
+import {Loader} from "../../components/HOC/Loader"
 
 const OVERLAY_COLORS = ['orange', 'red', 'yellow', 'coral', 'purple', 'lightgreen', 'turquoise']
 
 class StreamsList extends Component {
-
-    componentDidMount(){
-        this.props.getStreams()
-    }
 
     getRandomInt(min, max) {
         min = Math.ceil(min);
@@ -39,8 +37,8 @@ class StreamsList extends Component {
                         currentUser ? (
                             stream.userId === currentUser.id ? (
                                 <div className="streams__list--stream__text--edit">
-                                    <button>Edit</button>
-                                    <button>Delete</button>
+                                    <Link to={`/streams/edit/${stream.id}`}><button>Edit</button></Link>
+                                    <Link><button>Delete</button></Link>
                                 </div>
                             ) : (
                                 <p className="streams__list--stream__text--user">{stream.username}</p>
@@ -87,4 +85,4 @@ const mapStateToProps = ({streams: {streams}, auth: {currentUser}}) => {
     }
 }
 
-export default connect(mapStateToProps, {getStreams})(StreamsList)
+export default connect(mapStateToProps, {getStreams})(Loader(StreamsList))
