@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/index.scss';
 import App from './App';
-import {BrowserRouter} from "react-router-dom"
+import {Router} from "react-router-dom"
+import history from "./history"
 import {createStore, applyMiddleware, compose} from "redux"
 import reduxThunk from "redux-thunk"
 import rootReducer from "./reducers"
@@ -15,9 +16,9 @@ let store = createStore(rootReducer, composeEnhancers(applyMiddleware(...middlew
 
 ReactDOM.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <Router history={history}>
       <App />
-    </BrowserRouter>
+    </Router>
   </Provider>,
   document.getElementById('root')
 );

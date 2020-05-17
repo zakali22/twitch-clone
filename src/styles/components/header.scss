@@ -86,8 +86,9 @@
             position: relative;
             padding: 1rem 3rem;
             opacity: 0.6;
-            color: inherit;
+            color: white;
             transition: all .3s ease-in-out;
+            cursor: pointer;
             &::after {
                 content: '';
                 position: absolute;

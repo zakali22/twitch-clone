@@ -1,17 +1,27 @@
 import React, {Component} from 'react'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 import GoogleAuth from "./../googleAuth/GoogleAuth"
 
 class Header extends Component {
     state = {
-        activeLink: 'Streams'
+        activeLink: ''
     }
+
+    componentDidMount(){
+        console.log(this.props)
+        const {props: {location: { pathname }}} = this;
+        const _pathname = pathname.substr(1).charAt(0).toUpperCase() + pathname.substr(2)
+        this.setState({
+            activeLink: pathname === '/' ? 'Discover' : _pathname
+        })
+    }
+
     changeLink(e){
         this.setState({
             activeLink: e.target.innerText.trim()
         }, () => {
-            console.log(this.state.activeLink)
+            // console.log(this.state.activeLink)
         })
     }
     render(){
@@ -32,13 +42,14 @@ class Header extends Component {
                     </div>
                 </div>
                 <div className="header__links">
-                    <Link to="/streams" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Streams' || this.state.activeLink === 'TWITCH' ? 'active' : ''}`}><i className="far fa-compass"></i> Streams</h2></Link>
+                    <Link to="/" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Discover' ? 'active' : ''}`}><i className="far fa-compass"></i> Discover</h2></Link>
+                    <Link to="/streams" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Streams' ? 'active' : ''}`}><i className="far fa-compass"></i> Streams</h2></Link>
                     {/* <Link to="/register" onClick={e => this.changeLink(e)}><h2 className={`header__links--link ${this.state.activeLink === 'Register' ? 'active' : ''}`}> <i className="far fa-user"></i> Register</h2></Link> */}
-                    <Link to="/"><GoogleAuth /></Link>
+                    <GoogleAuth />
                 </div>
             </nav>
         )
     }
 }
 
-export default Header
+export default withRouter(Header)

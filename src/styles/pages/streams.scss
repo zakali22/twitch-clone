@@ -1,3 +1,4 @@
+@import '../base/variables';
 .streams {
     &__form {
         &--container {
@@ -12,6 +13,152 @@
 
         & > *:not(:last-child){
             margin-bottom: 30px;
+        }
+    }
+    &__list {
+        padding-top: 2.5rem;
+        height: 100%;
+        &--wrapper {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        &--stream {
+            display: flex;
+            flex-direction: column;
+            flex: 0 1 auto;
+            width: 30%;
+            min-height: 100%;
+            height: 100%;
+            margin-bottom: 2rem;
+            &.notLoggedInStream {
+                cursor: pointer;
+                &:hover {
+                    .streams__list--stream__image img {
+                        transform: translate(10px, -10px);
+                    }
+                    .streams__list--stream__image .hover__overlay {
+                        opacity: 1;
+                    }
+                }
+            }
+            &.loggedInStream {
+                .streams__list--stream__image {
+                    cursor: pointer;
+                    &:hover {
+                        img {
+                            transform: translate(10px, -10px);
+                        }
+                        .hover__overlay {
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+            
+            &:not(:nth-of-type(3n)){
+                margin-right: 2rem;
+            }
+            &__image {
+                flex: 3;
+                z-index: 2;
+                position: relative;
+                img {
+                    min-width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    z-index: 2;
+                    transition: all .2s ease-in-out;
+                }
+                .hover__overlay {
+                    background: red;
+                    width: 100%;
+                    min-height: 100%;
+                    z-index: -1;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    opacity: 0;
+                    transition: all .2s ease-in-out;
+                }
+            }
+            &__text {
+                flex: 1;
+                padding-top: 1rem;
+                display: flex;
+                justify-content: space-between;
+                &--description {
+                    h3 {
+                        color: $themeGray;
+                        font-size: 1.7rem;
+                        text-transform: uppercase;
+                    }
+                    p {
+                        margin-top: .5rem;
+                        color: $themeLightGray;
+                    }
+                    &__tags {
+                        display: flex;
+                        justify-content: flex-start;
+                        width: 100%;
+                        margin-top: 1rem;;
+                        span {
+                            cursor: pointer;
+                            margin-right: 10px;
+                            background: darkgrey;
+                            color: #f3f3f3;
+                            padding: 3px 10px;
+                            font-size: 1.3rem;
+                            border-radius: 5px;
+                            &:nth-last-of-type(){
+                                margin-right: 0;
+                            }
+                        }
+                    }
+                }
+                &--user {
+                    color: $themeLightGray;
+                }
+                &--edit {
+                    display: flex;
+                    align-items: flex-start;
+                    justify-content: space-between;
+                    button {
+                        flex: 1;
+                        cursor: pointer;
+                        background: none;
+                        border: 1px solid $themePrimary;
+                        padding: .5rem 2rem;
+                        border-radius: 10px;
+                        &:first-of-type {
+                            margin-right: 1rem;
+                            &:hover {
+                                background: $themePrimary;
+                                color: white;
+                            }
+                        }
+                        &:last-of-type {
+                            &:hover {
+                                background: $themeRed;
+                                border: 1px solid $themeRed;
+                                color: white;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &__edit {
+        height: 100%;
+        padding-top: 2.5rem;
+        &--buttons {
+            display: flex;
+            justify-content: flex-start;
+            width: 100%;
+            max-width: 70%;
+            & > *:first-child {
+                margin-right: 2rem;
+            }
         }
     }
 }

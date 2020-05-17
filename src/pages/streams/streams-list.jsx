@@ -1,89 +1,88 @@
 import React, {Component} from 'react'
+import {connect} from "react-redux"
+import {getStreams} from "../../actions/streams"
+import StreamerImage from "../../streamer-playing.PNG"
+import {Link} from "react-router-dom"
+import {Loader} from "../../components/HOC/Loader"
+
+const OVERLAY_COLORS = ['orange', 'red', 'yellow', 'coral', 'purple', 'lightgreen', 'turquoise']
 
 class StreamsList extends Component {
+
+    getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+    }
+
+    randomColorSelector = () => {
+        const randomNum = this.getRandomInt(0, OVERLAY_COLORS.length - 1);
+        return OVERLAY_COLORS[randomNum]
+    }
+
+    renderEditableSection = (stream) => {
+        const {props: {currentUser}} = this;
+        return (
+            <div className="streams__list--stream__text">
+                    <div className="streams__list--stream__text--description">
+                        <h3>{stream.title}</h3>
+                        <p>{stream.description}</p>
+                        <div className="streams__list--stream__text--description__tags">
+                            <span>English</span>
+                            <span>Rank</span>
+                            <span>Moba</span>
+                        </div>
+                    </div>
+                    {
+                        currentUser ? (
+                            stream.userId === currentUser.id ? (
+                                <div className="streams__list--stream__text--edit">
+                                    <Link to={`/streams/edit/${stream.id}`}><button>Edit</button></Link>
+                                    <Link><button>Delete</button></Link>
+                                </div>
+                            ) : (
+                                <p className="streams__list--stream__text--user">{stream.username}</p>
+                            )
+                        ) : (
+                            <p className="streams__list--stream__text--user">{stream.username}</p>
+                        )
+                    }
+            </div>
+        )
+    }
+
+    renderStreamsList = () => {
+        const {props: {streams, currentUser}} = this;
+        return streams.map((stream, id) => {
+            return (
+                <div key={id} className={`streams__list--stream ${currentUser && stream.userId === currentUser.id ? 'loggedInStream' : 'notLoggedInStream'} `}>
+                    <div className="streams__list--stream__image">
+                        <img src={StreamerImage} alt="Streamer"/>
+                        <div className="hover__overlay" style={{backgroundColor: this.randomColorSelector()}}/>
+                    </div>
+                    {this.renderEditableSection(stream)}
+                </div>
+            )
+        })
+    }
+
     render(){
         return (
-            <div className="homepage">
-                <div className="homepage__live-channels">
-                    <div className="homepage__live-channels--main">
-                        <div className="homepage__live-channels--main__search">
-                            <form>
-                                <label>
-                                    <input placeholder="Search..." name="channelSearch"/>   
-                                </label>
-                            </form>
-                            <div>
-                                <i className="fas fa-crown"></i>
-                                <p>Twitch Prime</p>
-                            </div>
-                        </div>
-                        <div className="homepage__live-channels--main__recommended">
-                            <h1>Recommended live channels</h1>
-                            <div className="homepage__live-channels--main__recommended--video">
-                                <div className="homepage__live-channels--main__recommended--video__player">
-                                    <div className="left-side">
-                                        <span>
-                                            <p>Live</p>
-                                        </span>
-                                        <span>
-                                            <p>4K</p>
-                                        </span>
-                                    </div>
-                                    <div className="bottom-side">
-                                        <div>
-                                            <i className="fas fa-play"></i>
-                                            <i className="fas fa-volume-down"></i>
-                                        </div>
-                                        <div>
-                                            <i className="fas fa-heart"></i>
-                                            <i className="fas fa-compress"></i>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="homepage__live-channels--main__recommended--video__details">
-                                    <div className="homepage__live-channels--main__recommended--video__details--raw">
-                                        <div className="homepage__live-channels--main__recommended--video__details--raw__img"></div>
-                                        <div className="homepage__live-channels--main__recommended--video__details--raw__name">
-                                            <h2>Cayla Brister</h2>
-                                            <p>League of Legends</p>
-                                            <p>5.6K viewers</p>
-                                        </div>
-                                    </div>
-                                    <div className="homepage__live-channels--main__recommended--video__details--tags">
-                                        <span>English</span>
-                                        <span>Rank</span>
-                                        <span>Moba</span>
-                                    </div>
-                                    <div className="homepage__live-channels--main__recommended--video__details--description">
-                                        <p>League of Legends is a free-to-play competitive MOBA game with a large following in Esports</p>
-                                        <p>Tuesday-Saturday starting at anytime between 4pm-10pm pacific</p>
-                                        <p>I tend to stick to my schedule but variations of food dates, coffee, chills, IRL and hangouts</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="homepage__live-channels--aside">
-                        <div className="homepage__live-channels--aside__img larger"></div>
-                        <div className="homepage__live-channels--aside__img larger"></div>
-                        <div className="homepage__live-channels--aside__img larger"></div>
-                        <div className="homepage__live-channels--aside__img larger"></div>
-                        <div className="homepage__live-channels--aside__consoles">
-                            <span>
-                                <i className="fab fa-xbox"></i>
-                            </span>
-                            <span>
-                                <i className="fab fa-playstation"></i>
-                            </span>
-                            <span>
-                                <i className="fas fa-desktop"></i>
-                            </span>
-                        </div>
-                    </div>
+            <div className="streams__list">
+                <h1 className="main-page-title">Your Streams</h1>
+                <div className="streams__list--wrapper">
+                    {this.renderStreamsList()}
                 </div>
             </div>
         )
     }
 }
 
-export default StreamsList
+const mapStateToProps = ({streams: {streams}, auth: {currentUser}}) => {
+    return {
+        streams, 
+        currentUser
+    }
+}
+
+export default connect(mapStateToProps, {getStreams})(Loader(StreamsList))

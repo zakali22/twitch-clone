@@ -33,7 +33,7 @@ h4, .h4 {
 }
 
 p {
-
+    font-size: 1.6rem;
 }
 
 a {
@@ -92,11 +92,25 @@ label {
     transition: .2s all ease-in-out;
     font-weight: bold;
     outline: none;
+    color: $themeGray;
     &.btn-primary {
-        color: $themeGray;
         &:hover, &:active, &:focus {
             background: $themePrimary;
             color: white;
+        }
+    }
+    &.btn-danger {
+        &:hover, &:active, &:focus {
+            background: $themeRed;
+            color: white;
+            border: 2px solid $themeRed;
+        }
+    }
+    &.btn-success {
+        &:hover, &:active, &:focus {
+            background: $themeGreen;
+            color: white;
+            border: 2px solid $themeGreen;
         }
     }
 }
