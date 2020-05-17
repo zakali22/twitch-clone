@@ -5,6 +5,7 @@ export default {
     GET_STREAMS: 'streams/GET_STREAMS',
     GET_STREAM: 'streams/GET_STREAM',
     DELETE_STREAM: 'streams/DELETE_STREAM',
-    EDIT_STREAM: 'streams/EDIT_STREAM'
+    EDIT_STREAM: 'streams/EDIT_STREAM', 
+    REMOVE_SELECTION: 'streams/REMOVE_SELECTION'
 }
 

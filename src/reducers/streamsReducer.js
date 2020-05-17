@@ -34,7 +34,12 @@ export default function(state = INITIAL_STATE, action){
                 streams: state.streams.filter(el => {
                     return el.id !== action.payload.id
                 })
-            }         
+            } 
+        case actionTypes.REMOVE_SELECTION: 
+            return {
+                ...state, 
+                stream: null
+            }        
         default:
             return state
     }
