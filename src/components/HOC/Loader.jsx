@@ -1,6 +1,7 @@
 import React, {Component} from "react"
 import { connect } from "react-redux"
 import {getStreams} from "../../actions/streams"
+import LoaderSpinner from "react-loader-spinner"
 
 export const Loader = (ChildComponent) => {
     class HOComponent extends Component {
@@ -17,7 +18,13 @@ export const Loader = (ChildComponent) => {
         }
 
         render(){
-            if(!this.state.loaded) return <p>Loading</p>
+            if(!this.state.loaded) {
+                return (
+                    <div className="loader-overlay">
+                        <LoaderSpinner type="Rings" color="#712cdc" height={200} width={200}/>
+                    </div>
+                )
+            }
             return <ChildComponent {...this.props} />
         }
     }

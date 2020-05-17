@@ -175,3 +175,12 @@ label {
     margin-top: 5px;
     font-weight: bold;
 }
+
+.loader-overlay {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
