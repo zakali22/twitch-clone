@@ -42,3 +42,68 @@ a {
         color: lightgrey
     }
 }
+
+label, input {
+    width: 100%;
+}
+
+label {
+    font-size: 2rem;
+}
+
+
+// Common page designs (classes)
+
+.main-page-title {
+    color: $themeGray;
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 20px;
+}
+
+.input {
+    margin-top: 1rem;
+    padding: 1rem 1.2rem;
+    background: none;
+    border: 2px solid lightgrey;
+    border-radius: 10px;
+    transition: .2s all ease-in-out;
+    &:focus {
+        outline: none;
+    }
+    &.input-primary {
+        &:focus {
+            border: 2px solid $themePrimary;
+        }
+    }
+    &.input-error {
+        border: 2px solid $themeRed;
+    }
+}
+
+
+.btn {
+    padding: 1.5rem .5rem;
+    min-width: 50%;
+    border: 2px solid $themePrimary;
+    border-radius: 20px;
+    background: none;
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: .2s all ease-in-out;
+    font-weight: bold;
+    outline: none;
+    &.btn-primary {
+        color: $themeGray;
+        &:hover, &:active, &:focus {
+            background: $themePrimary;
+            color: white;
+        }
+    }
+}
+
+.form-error {
+    color: $themeRed;
+    font-size: 1.6rem;
+    margin-top: 5px;
+    font-weight: bold;
+}
