@@ -45,7 +45,7 @@ class GoogleAuth extends Component {
             return null
         } else if(this.props.signedIn){
             return (
-                <h2 className={`header__links--link`} onClick={e => this.props.signOut() }> <i className="far fa-user"></i> Sign out</h2>
+                <h2 className={`header__links--link`} onClick={e => this.props.signOut() }> <i className="fab fa-google"></i> Sign out</h2>
             )
         } else {
             return (
