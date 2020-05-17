@@ -54,6 +54,60 @@ label {
 
 // Common page designs (classes)
 
+
+.main-app {
+    display: flex;
+    height: 100%;
+    min-height: 100vh;
+    & > * {
+        &:first-child {
+            flex: 0 0 300px;
+        }
+        &:last-child {
+            flex: 1;
+            background: white;
+            border-top-left-radius: 50px;
+            padding: 4rem 6rem;
+        }
+    }
+    &__sites {
+        display: flex;
+        flex-direction: column;
+        &--nav {
+            display: flex;
+            &__arrows {
+                display: flex;
+                justify-content: space-between;
+                margin-right: auto;
+                padding: 10px 5px;
+                width: 8rem;
+                color: darkgrey;
+                font-size: 2rem;
+                & > *:first-child {
+                    margin-right: 20px;
+                }
+                & > * {
+                    cursor: pointer;
+                }
+            }
+            &__settings {
+                display: flex;
+                justify-content: space-between;
+                padding: 10px 5px;
+                align-items: center;
+                color: darkgrey;
+                font-size: 3rem;
+                & > *:not(:last-child){
+                    margin-right: 2.5rem;
+                }
+                & > * {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
 .main-page-title {
     color: $themeGray;
     font-family: 'Lato', sans-serif;

@@ -38,7 +38,7 @@ class StreamsList extends Component {
                             stream.userId === currentUser.id ? (
                                 <div className="streams__list--stream__text--edit">
                                     <Link to={`/streams/edit/${stream.id}`}><button>Edit</button></Link>
-                                    <Link><button>Delete</button></Link>
+                                    <Link to={`/streams/delete/${stream.id}`}><button>Delete</button></Link>
                                 </div>
                             ) : (
                                 <p className="streams__list--stream__text--user">{stream.username}</p>
